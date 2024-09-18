@@ -16,12 +16,13 @@
     dosTipos(123.456)
 
     //Literal types
-    type Talla = "S"| "M"| "L"| "XL"
+    type Talla = "S"| "M"| "L"| "XL" | "XXL"
     let talla: Talla
     talla = "S"
     talla = "M"
     talla = "L"
     talla = "XL"
+    talla = "XXL"
 
     function  dosTipos2(userId: UserId, talla: Talla){
         console.log(`userId ${userId}, talla ${talla}`)
