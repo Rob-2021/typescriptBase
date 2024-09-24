@@ -8,7 +8,7 @@
         color?: string,
         marca?: string,
     }
-    const productos: any[] = []
+    const productos: Producto[] = []
 
     const addProductos = (data: Producto) => {
         productos.push(data)
