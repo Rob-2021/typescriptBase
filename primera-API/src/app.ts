@@ -1,6 +1,10 @@
 import express, { Application, Request, Response } from 'express';
+import path from 'path';
 
 const app: Application = express();
+
+const publicDirectory = path.join(__dirname, '../public');
+app.use(express.static(publicDirectory));
 
 // Rutas
 app.get('/', (req: Request, res:Response) => {
@@ -61,11 +65,32 @@ app.post('/products', (req: Request, res:Response) => {
     res.send("creando un producto")
 })
 
+//rutas para archivos
+app.get('/download/txt', (req: Request, res:Response) => {
+    const filePath = path.join(publicDirectory, 'holamundo.txt');
+    res.sendFile(filePath);
+})
+
+app.get('/download/csv', (req: Request, res:Response) => {
+    const filePath = path.join(publicDirectory, 'data.csv');
+    res.sendFile(filePath);
+})
+
+app.get('/download/xlsx', (req: Request, res:Response) => {
+    const filePath = path.join(publicDirectory, 'dbestudiante.xlsx');
+    res.sendFile(filePath);
+})
+
+app.get('/download/pdf', (req: Request, res:Response) => {
+    const filePath = path.join(publicDirectory, 'remota.pdf');
+    res.sendFile(filePath);
+})
+
 export default app;
 
 /**
  * tarea
  * crear 3 peticiones get, que me devuelva
- * archivos .txt, .csv, xsl, .pdf
+ * archivos .txt, .csv, xlsx, .pdf
  * estos archivos deben estar en la carpeta public
  */
